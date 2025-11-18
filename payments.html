@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagamenti</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="back-arrow" onclick="history.back()">←</div>
+<div class="card">
+
+
+<h1>💳 Pagamenti</h1>
+
+<h2 style="margin-top:10px;">🎁 Vuoi Lasciarmi un Regalo?</h2>
+
+<p>Puoi contribuire tramite IBAN:</p>
+<div class="iban">INSERISCI QUI IL TUO IBAN</div>
+
+
+<p>Contribuisci con carta o PayPal:</p>
+
+<input id="amount" type="number" min="1" placeholder="Importo">
+
+<div id="paypal-button-container"></div>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AXr9FTIZPHKo1ZvHs_hI6DuoxE5q0r0MZpvk7TkpstDuPKnrKbHVq0M4b3_JYiGKJyoElBsQ2qNM42Xs&currency=EUR"></script>
+
+<script>
+paypal.Buttons({
+  createOrder: function(data, actions) {
+    return actions.order.create({
+      purchase_units: [{
+        amount: { value: document.getElementById("amount").value || "1.00" }
+      }]
+    });
+  },
+  onApprove: function(data, actions) {
+    return actions.order.capture().then(function(details) {
+      alert("Pagamento effettuato da " + details.payer.name.given_name);
+    });
+  }
+}).render('#paypal-button-container');
+</script>
+
+ </div>
+<a class="back" href="index.html">⬅ Torna alla Home</a>
+
+</body>
+</html>

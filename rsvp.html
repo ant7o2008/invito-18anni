@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conferma Presenza</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="back-arrow" onclick="history.back()">←</div>
+<div class="card">
+
+<h1>✅ Conferma Presenza</h1>
+
+<form onsubmit="sendWhatsApp(event)">
+  <input id="name" type="text" placeholder="Il tuo nome" required>
+  <input id="people" type="number" min="1" placeholder="Numero di persone" required>
+  <textarea id="msg" placeholder="Messaggio (opzionale)"></textarea>
+  <button type="submit">Conferma su WhatsApp</button>
+</form>
+
+<script>
+function sendWhatsApp(event){
+  event.preventDefault();
+  const n = document.getElementById("name").value;
+  const p = document.getElementById("people").value;
+  const m = document.getElementById("msg").value;
+
+  const text = encodeURIComponent(`Ciao Antonio, sono ${n}. Confermo per ${p} persone. ${m}`);
+
+  const phone = "393925756418"; 
+  window.open(`https://wa.me/${phone}?text=${text}`, "_blank");
+}
+</script>
+
+</div>
+<a class="back" href="index.html">⬅ Torna alla Home</a>
+
+</body>
+</html>

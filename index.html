@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invito – 18° Compleanno</title>
+  <style>
+    .back-arrow {
+      position: fixed;
+      top: 80px;
+      left: 20px;
+      font-size: 32px;
+      background: rgba(0,0,0,0.45);
+      color: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 99999;
+      backdrop-filter: blur(6px);
+      transition: 0.2s;
+    }
+    .back-arrow:hover {
+      background: rgba(0,0,0,0.65);
+      transform: scale(1.1);
+    }
+    #content {
+      margin-top: 20px;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #fff5f5, #ffeede);
+      transition: background 2s ease;
+      color: #222;
+    }
+    header {
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      padding: 70px 20px 60px;
+      background: url('./composizione-natalizia-con-regali-rami-di-abete-decorazioni-rosse-su-sfondo-bianco-spazio-per-la-copia-della-vista-dall-alto-del-concetto-di-natale-inverno-capodanno_123827-27490.jpg') top center/cover no-repeat;
+      color: white;
+      text-shadow: 0 4px 14px rgba(0,0,0,0.55);
+      position: relative;
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.15));
+      pointer-events: none;
+      z-index: 1;
+    }
+    header h1 {
+      font-size: 50px;
+      margin: 0;
+      position: relative;
+      z-index: 2;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+    header p {
+      font-size: 22px;
+      margin-top: 10px;
+      position: relative;
+      z-index: 2;
+      opacity: 0.9;
+    }
+    .section {
+      background: #ffffff;
+      padding: 18px 16px;
+      border-radius: 18px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      border-top: 3px solid #d62828;
+    }
+    .section:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.12);
+    }
+    .section h2 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .iban {
+      background: #f0f0f0;
+      padding: 18px;
+      font-size: 22px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 600;
+      word-break: break-all;
+      border: 1px solid #ccc;
+    }
+    .btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 14px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      background: #7b4bff;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+    .btn:hover {
+      background: #5f38cc;
+    }
+    .qr-section {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+
+    /* Layout moderno a griglia */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 14px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 850px) {
+      .main-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .main-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Ridisegno moderno delle cards */
+    .section {
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 20px 18px !important;
+      border-radius: 16px !important;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06) !important;
+      border-top: 3px solid #d62828 !important;
+    }
+
+
+.home-hero {
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 20px;
+}
+
+.home-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.home-subtitle {
+  font-size: 18px;
+  opacity: 0.7;
+  margin-bottom: 25px;
+}
+
+/* --- HOME ULTRA MODERNA --- */
+
+.home-hero {
+  padding: 40px 20px;
+}
+
+.home-grid {
+  gap: 22px;
+}
+
+.home-card {
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 28px 14px;
+  border-radius: 22px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.home-card span {
+  font-size: 40px;
+  margin-bottom: 8px;
+  transition: transform .3s ease;
+}
+
+.home-card:hover span {
+  transform: scale(1.18) rotate(4deg);
+}
+
+.home-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Countdown Card */
+.home-countdown-card {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(16px);
+  border-radius: 18px;
+  padding: 20px 15px;
+  border: 1px solid rgba(255,255,255,0.45);
+  margin: 0 auto 30px;
+  width: 100%;
+  max-width: 340px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  font-size: 20px;
+  font-weight: 700;
+  color: #222;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.home-card {
+  background: white;
+  padding: 22px 10px;
+  border-radius: 18px;
+  text-decoration: none;
+  color: #222;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  transition: .25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-card span {
+  font-size: 34px;
+  margin-bottom: 5px;
+}
+
+.home-card h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.home-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  border-color: #d62828;
+}
+  </style>
+  <style>
+.home-menu {
+  text-align: center;
+}
+
+.home-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-top: 15px;
+}
+
+.home-buttons a {
+  background: white;
+  padding: 16px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #222;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  border-top: 3px solid #d62828;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.home-buttons a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+  </style>
+<style>
+/* Effetto neve */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: white;
+  font-size: 20px;
+  user-select: none;
+  pointer-events: none;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  0% { transform: translateY(-10vh) translateX(0); }
+  100% { transform: translateY(110vh) translateX(20px); }
+}
+/* Cornici natalizie alle sezioni */
+</style>
+<style>
+    #countdown {
+      font-size: 24px;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .rsvp-form input,
+    .rsvp-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    .rsvp-form textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+    .guestbook-messages {
+      margin-top: 15px;
+      max-height: 220px;
+      overflow-y: auto;
+      padding: 10px;
+      border-radius: 10px;
+      background: #fafafa;
+      border: 1px solid #eee;
+      font-size: 15px;
+    }
+    .guestbook-messages p {
+      margin-bottom: 8px;
+      border-bottom: 1px dashed #ddd;
+      padding-bottom: 6px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      height: 150px;
+    }
+    .map-container {
+      margin-top: 15px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid #d62828;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 260px;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+
+
+<header>
+  <h1>🎄 18° di Antonio 🎄</h1>
+  <p>Venerdì 2 Gennaio — Ore 20:00</p>
+</header>
+<section class="home-hero">
+  <h2 class="home-title">✨ Benvenuto al mio 18° ✨</h2>
+  <p class="home-subtitle">Scegli cosa vuoi fare</p>
+  <div class="home-countdown-card">
+    <div id="home-countdown"></div>
+  </div>
+
+  <div class="home-grid">
+    <a class="home-card" href="details.html">
+      <span>📍</span>
+      <h3>Dettagli</h3>
+    </a>
+
+    <a class="home-card" href="map.html">
+      <span>🗺️</span>
+      <h3>Come Arrivare</h3>
+    </a>
+
+
+    <a class="home-card" href="rsvp.html">
+      <span>✅</span>
+      <h3>Conferma</h3>
+    </a>
+
+    <a class="home-card" href="gallery.html">
+      <span>📸</span>
+      <h3>Gallery</h3>
+    </a>
+
+    <a class="home-card" href="payments.html">
+      <span>💳</span>
+      <h3>Pagamenti</h3>
+    </a>
+
+    <a class="home-card" href="contacts.html">
+      <span>📞</span>
+      <h3>Contatti</h3>
+    </a>
+  </div>
+</section>
+<div class="main-grid" id="content" style="display:none;">
+
+<section class="section" id="countdown">
+  <h2>⏳ Countdown alla Festa</h2>
+  <p id="countdown"></p>
+</section>
+
+<section class="section" id="details">
+  <h2>📍 Dettagli Evento</h2>
+  <p><strong>Data:</strong> Venerdì 2 Gennaio</p>
+  <p><strong>Orario:</strong> 20:00</p>
+  <p><strong>Luogo:</strong> Suprema Experience</p>
+  <p><strong>Indirizzo:</strong> Strada Provinciale Circumlago di Lucrino, 4b — Pozzuoli (NA)</p>
+  <p style="margin-top:15px;font-style:italic;">Le feste non finiscono: cambiano livello. Luci, brindisi e caos stellare per i miei 18.</p>
+</section>
+
+<section class="section" id="map">
+  <h2>🗺️ Come Arrivare</h2>
+  <p>Suprema Experience<br>Strada Provinciale Circumlago di Lucrino, 4b — Pozzuoli (NA)</p>
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps?q=Suprema%20Experience%20Pozzuoli&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
+
+
+<section class="section" id="rsvp">
+  <h2>✅ Conferma Presenza</h2>
+  <p>Compila il form e verrai reindirizzato su WhatsApp per confermare la presenza.</p>
+  <form class="rsvp-form" onsubmit="sendWhatsApp(event)">
+    <input id="rsvp-name" type="text" placeholder="Il tuo nome" required>
+    <input id="rsvp-people" type="number" min="1" placeholder="Numero di persone" required>
+    <textarea id="rsvp-message" placeholder="Messaggio (facoltativo)"></textarea>
+    <button type="submit" class="btn">Conferma su WhatsApp</button>
+  </form>
+  <p style="font-size:13px;margin-top:8px;">Nel codice del sito ricordati di sostituire il numero WhatsApp fittizio con il tuo vero numero.</p>
+</section>
+
+<section class="section">
+  <h2>📖 Guestbook</h2>
+  <p>Lascia un messaggio o un augurio per Antonio:</p>
+  <form class="rsvp-form" onsubmit="addGuestbookMessage(event)">
+    <input id="guest-name" type="text" placeholder="Il tuo nome" required>
+    <textarea id="guest-text" placeholder="Il tuo messaggio" required></textarea>
+    <button type="submit" class="btn">Lascia un messaggio</button>
+  </form>
+  <div id="guestbook" class="guestbook-messages"></div>
+</section>
+
+<section class="section" id="gallery">
+  <h2>📸 Gallery</h2>
+  <p>Qualche foto a tema (puoi sostituirle con le tue):</p>
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&w=600&q=80" alt="Natale">
+    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="Party">
+    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Brindisi">
+  </div>
+</section>
+
+<section class="section" id="pay">
+  <h2>🎁 Wishlist</h2>
+  <p>Se vuoi qualche idea per il regalo, ecco cosa mi piace:</p>
+  <ul style="font-size:16px;line-height:1.6;padding-left:20px;">
+    <li>Esperienze (viaggi, concerti, attività)</li>
+    <li>Tech & accessori (cuffie, smartwatch, ecc.)</li>
+    <li>Contributo per patente/auto</li>
+    <li>Un brindisi insieme la sera della festa 🥂</li>
+  </ul>
+</section>
+
+<section class="section" id="pay">
+  <h2>💳 Pagamenti Online</h2>
+  <p>Puoi contribuire direttamente con carta (Stripe) o PayPal:</p>
+
+  <h3>Pagamento con Carta (Stripe)</h3>
+  <p>Premi il pulsante per procedere al pagamento sicuro.</p>
+  <button class="btn" onclick="checkoutStripe()">Paga con Carta</button>
+
+  <h3 style="margin-top:30px;">Pagamento con PayPal</h3>
+  <input id="amount" type="number" min="1" placeholder="Inserisci l'importo" style="width:100%;padding:12px;font-size:18px;border-radius:10px;margin-bottom:15px;border:1px solid #ccc;">
+  <div id="paypal-button-container"></div>
+</section>
+
+<section class="section" id="contatti">
+  <h2>📞 Contatti</h2>
+  <p>Per confermare la presenza scrivimi qui:</p>
+  <p><strong>Telefono:</strong> 0000000000</p>
+  <p><strong>Instagram:</strong> @tuonome</p>
+</section>
+
+</div>
+<script>
+function copyIBAN() {
+  const iban = document.getElementById("iban-display").innerText;
+  navigator.clipboard.writeText(iban).then(() => alert("IBAN copiato!"));
+}
+</script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AXr9FTIZPHKo1ZvHs_hI6DuoxE5q0r0MZpvk7TkpstDuPKnrKbHVq0M4b3_JYiGKJyoElBsQ2qNM42Xs&currency=EUR"></script>
+<script>
+function checkoutStripe() {
+  const stripe = Stripe('INSERISCI_TUA_PUBLIC_KEY_STRIPE');
+  stripe.redirectToCheckout({
+    sessionId: 'INSERISCI_TUA_CHECKOUT_SESSION_ID'
+  });
+}
+
+paypal.Buttons({
+  createOrder: function(data, actions) {
+    return actions.order.create({
+      purchase_units: [{ amount: { value: document.getElementById('amount').value || '1.00' } }]
+    });
+  },
+  onApprove: function(data, actions) {
+    return actions.order.capture().then(function(details) {
+      alert('Pagamento completato da ' + details.payer.name.given_name);
+    });
+  }
+}).render('#paypal-button-container');
+</script>
+<script>
+// CREA FIOCCHI DI NEVE
+function createSnowflake() {
+  const snowflake = document.createElement('div');
+  snowflake.classList.add('snowflake');
+  snowflake.innerHTML = '❄';
+  snowflake.style.left = Math.random() * 100 + 'vw';
+  snowflake.style.animationDuration = 3 + Math.random() * 4 + 's';
+  snowflake.style.opacity = Math.random();
+  snowflake.style.fontSize = 12 + Math.random() * 20 + 'px';
+  document.body.appendChild(snowflake);
+  setTimeout(() => snowflake.remove(), 7000);
+}
+setInterval(createSnowflake, 150);
+</script>
+<script>
+  // COUNTDOWN
+  const targetDate = new Date('2026-01-02T20:00:00');
+  function updateCountdown() {
+    const now = new Date();
+    const diff = targetDate - now;
+    const el = document.getElementById('countdown');
+    if (!el) return;
+    if (diff <= 0) {
+      el.textContent = "È il momento di festeggiare!";
+      document.getElementById('home-countdown').textContent = "È il momento di festeggiare!";
+      return;
+    }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    el.textContent = `Mancano ${days} giorni, ${hours} ore e ${minutes} minuti alla festa!`;
+    document.getElementById('home-countdown').textContent = el.textContent;
+  }
+  setInterval(updateCountdown, 60000);
+  updateCountdown();
+
+  // WHATSAPP RSVP
+  function sendWhatsApp(event) {
+    event.preventDefault();
+    const name = document.getElementById('rsvp-name').value || 'Ospite';
+    const people = document.getElementById('rsvp-people').value || '1';
+    const msg = document.getElementById('rsvp-message').value || '';
+    const text = encodeURIComponent(`Ciao Antonio, sono ${name}. Confermo per ${people} persona/e. ${msg ? 'Messaggio: ' + msg : ''}`);
+    const phone = '393925756418'; // SOSTITUISCI CON IL TUO NUMERO WHATSAPP (es. 393401234567)
+    window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+  }
+
+  // GUESTBOOK (locale sul dispositivo)
+  function loadGuestbook() {
+    const container = document.getElementById('guestbook');
+    if (!container) return;
+    const stored = JSON.parse(localStorage.getItem('guestbookMessages') || '[]');
+    container.innerHTML = '';
+    stored.forEach(m => {
+      const p = document.createElement('p');
+      p.textContent = `${m.name}: ${m.text}`;
+      container.appendChild(p);
+    });
+  }
+  function addGuestbookMessage(event) {
+    event.preventDefault();
+    const name = document.getElementById('guest-name').value;
+    const text = document.getElementById('guest-text').value;
+    if (!name || !text) return;
+    const stored = JSON.parse(localStorage.getItem('guestbookMessages') || '[]');
+    stored.push({ name, text });
+    localStorage.setItem('guestbookMessages', JSON.stringify(stored));
+    document.getElementById('guest-name').value = '';
+    document.getElementById('guest-text').value = '';
+    loadGuestbook();
+  }
+  loadGuestbook();
+</script>
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('menu');
+  menu.classList.toggle('show');
+}
+</script>
+<script>
+// Cambia sfondo automaticamente ogni 12 secondi
+const bgList = [
+  "linear-gradient(180deg, #fff5f5, #ffeede)",
+  "linear-gradient(180deg, #f3e7ff, #ffe1f0)",
+  "linear-gradient(180deg, #e7f7ff, #fff3e6)",
+  "linear-gradient(180deg, #fff0f0, #ffe7d9)"
+];
+
+let bgIndex = 0;
+
+function changeBackground() {
+  bgIndex = (bgIndex + 1) % bgList.length;
+  document.body.style.background = bgList[bgIndex];
+}
+
+setInterval(changeBackground, 12000);
+</script>
+</body>
+<script>
+function showContent() {
+  document.getElementById('content').style.display = 'grid';
+}
+</script>
+</html>
