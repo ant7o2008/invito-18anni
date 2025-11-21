@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antonio – 18 anni</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .home-card {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .back-arrow {
+      position: fixed;
+      top: 80px;
+      left: 20px;
+      font-size: 32px;
+      background: rgba(0,0,0,0.45);
+      color: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 99999;
+      backdrop-filter: blur(6px);
+      transition: 0.2s;
+    }
+    .back-arrow:hover {
+      background: rgba(0,0,0,0.65);
+      transform: scale(1.1);
+    }
+    #content {
+      margin-top: 20px;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      background-attachment: fixed;
+      color: #f5f5f5;
+    }
+
+    header {
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      padding: 100px 20px 80px;
+      background: linear-gradient(135deg, rgba(15,32,39,0.95) 0%, rgba(32,58,67,0.9) 100%);
+      color: white;
+      border-bottom: 2px solid rgba(212,175,55,0.4);
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(212,175,55,0.1) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      margin: 0;
+      position: relative;
+      z-index: 2;
+      letter-spacing: 4px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #d4af37 0%, #f8e9a0 50%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+    }
+    header p {
+      font-size: 24px;
+      margin-top: 20px;
+      position: relative;
+      z-index: 2;
+      opacity: 0.95;
+      font-weight: 300;
+      letter-spacing: 2px;
+      color: #f5f5f5;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .section {
+      background: rgba(255,255,255,0.98);
+      padding: 30px 24px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(212,175,55,0.2);
+      color: #222;
+    }
+    .section:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(212,175,55,0.25);
+    }
+    .section h2 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #2c5364;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      border-radius: 2px;
+    }
+    .section p {
+      color: #444;
+    }
+    .section p strong {
+      color: #2c5364;
+      font-weight: 600;
+    }
+    .iban {
+      background: rgba(212,175,55,0.08);
+      padding: 18px;
+      font-size: 22px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: 600;
+      word-break: break-all;
+      border: 1px solid rgba(212,175,55,0.3);
+      color: #2c5364;
+    }
+    .btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 16px 32px;
+      font-size: 18px;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #d4af37 0%, #f8e9a0 100%);
+      color: #222;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+      letter-spacing: 1px;
+    }
+    .btn:hover {
+      background: linear-gradient(135deg, #f8e9a0 0%, #d4af37 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212,175,55,0.5);
+    }
+    .qr-section {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    /* Layout moderno a griglia */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 14px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 48px;
+        letter-spacing: 2px;
+      }
+      header p {
+        font-size: 16px;
+      }
+      .home-title {
+        font-size: 32px;
+      }
+      .section h2 {
+        font-size: 26px;
+      }
+      .home-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+    }
+
+    @media (min-width: 850px) {
+      .main-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .main-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Ridisegno moderno delle cards */
+    .section {
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 30px 24px !important;
+      border-radius: 16px !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15) !important;
+      border: 1px solid rgba(212,175,55,0.2) !important;
+    }
+
+    .home-hero {
+      text-align: center;
+      padding: 50px 20px;
+      margin-top: 0;
+      background: rgba(15,32,39,0.3);
+    }
+
+    .home-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #d4af37 0%, #f8e9a0 50%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .home-subtitle {
+      font-size: 20px;
+      opacity: 0.9;
+      margin-bottom: 35px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      color: #f5f5f5;
+    }
+
+    /* Countdown Card */
+    .home-countdown-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(20px);
+      border-radius: 16px;
+      padding: 24px 20px;
+      border: 1px solid rgba(212,175,55,0.3);
+      margin: 0 auto 40px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      font-size: 18px;
+      font-weight: 400;
+      color: #f5f5f5;
+      letter-spacing: 0.5px;
+    }
+
+    .home-grid {
+      display: grid;
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (min-width: 768px) {
+      .home-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .home-card {
+      background: rgba(255,255,255,0.95);
+      padding: 30px 20px;
+      border-radius: 16px;
+      text-decoration: none;
+      color: #222;
+      border: 1px solid rgba(212,175,55,0.3);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .home-card span {
+      font-size: 48px;
+      margin-bottom: 12px;
+      transition: transform .3s ease;
+      filter: grayscale(20%);
+    }
+
+    .home-card h3 {
+      margin: 0;
+      font-size: 19px;
+      font-weight: 600;
+      color: #2c5364;
+      letter-spacing: 0.5px;
+    }
+
+    .home-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(212,175,55,0.3);
+      border-color: #d4af37;
+    }
+
+    .home-card:hover span {
+      transform: scale(1.15);
+      filter: grayscale(0%);
+    }
+  </style>
+
+  <style>
+    .home-menu {
+      text-align: center;
+    }
+
+    .home-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .home-buttons a {
+      background: rgba(255,255,255,0.95);
+      padding: 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      color: #222;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+      border: 1px solid rgba(212,175,55,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .home-buttons a:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(212,175,55,0.3);
+      border-color: #d4af37;
+    }
+  </style>
+
+  <style>
+    #countdown {
+      font-size: 20px;
+      text-align: center;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #2c5364;
+      line-height: 1.6;
+    }
+    .rsvp-form input,
+    .rsvp-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(44,83,100,0.2);
+      font-size: 16px;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      transition: border-color 0.3s ease;
+    }
+    .rsvp-form input:focus,
+    .rsvp-form textarea:focus {
+      outline: none;
+      border-color: #d4af37;
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.1);
+    }
+    .rsvp-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .guestbook-messages {
+      margin-top: 20px;
+      max-height: 300px;
+      overflow-y: auto;
+      padding: 16px;
+      border-radius: 12px;
+      background: rgba(44,83,100,0.03);
+      border: 1px solid rgba(44,83,100,0.1);
+      font-size: 15px;
+    }
+    .guestbook-messages p {
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(44,83,100,0.1);
+      padding-bottom: 8px;
+      line-height: 1.6;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      height: 200px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .map-container {
+      margin-top: 20px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(212,175,55,0.4);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+    }
+  </style>
+
+  <!-- TEMA NATALE + NEVE REALE -->
+  <style>
+    /* Sfondo natalizio generale */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background:
+        radial-gradient(circle at 0 0, #7f1d1d 0, transparent 55%),
+        linear-gradient(160deg, #020617 0%, #020617 40%, #111827 100%);
+      color: #f9fafb;
+      background-attachment: fixed;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Leggero bagliore dall'alto */
+    body::before {
+      content: "";
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(248,250,252,0.12) 0, transparent 55%);
+      opacity: 0.15;
+      z-index: -1;
+    }
+
+    header {
+      background:
+        linear-gradient(135deg, rgba(15,23,42,0.96), rgba(22,44,67,0.98)),
+        radial-gradient(circle at top, rgba(250,204,21,0.18), transparent 60%);
+      border-bottom: 2px solid rgba(250,204,21,0.65);
+    }
+
+    header::before {
+      background:
+        radial-gradient(circle at 20% 0%, rgba(250,204,21,0.24) 0, transparent 55%),
+        radial-gradient(circle at 80% 40%, rgba(248,250,252,0.18) 0, transparent 60%);
+    }
+
+    header p {
+      color: #e5e7eb;
+    }
+
+
+
+    .home-hero {
+      background:
+        linear-gradient(135deg, rgba(15,23,42,0.94), rgba(22,44,67,0.96));
+      border-radius: 24px;
+      max-width: 1080px;
+      margin: 40px auto 0;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.85);
+      border: 1px solid rgba(250,204,21,0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .home-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 0% 0%, rgba(250,250,250,0.12) 0, transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(250,204,21,0.2) 0, transparent 60%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .home-hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .home-title {
+      font-size: 46px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+    }
+
+    .home-subtitle {
+      color: #e5e7eb;
+    }
+
+    .home-countdown-card {
+      background: rgba(15,23,42,0.9);
+      border-radius: 999px;
+      border: 1px solid rgba(250,204,21,0.7);
+      box-shadow: 0 18px 46px rgba(0,0,0,0.9);
+      color: #fef9c3;
+    }
+
+    #home-countdown {
+      color: #fde68a;
+      font-weight: 500;
+    }
+
+    .home-grid {
+      padding-bottom: 24px;
+    }
+
+    .home-card {
+      background: rgba(15,23,42,0.96);
+      border: 1px solid rgba(250,204,21,0.45);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.85);
+      color: #e5e7eb;
+    }
+
+    .home-card h3 {
+      margin: 0;
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, #d4af37 0%, #f8e9a0 50%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .home-card span {
+      font-size: 48px;
+      margin-bottom: 12px;
+      transition: transform .3s ease;
+      background: linear-gradient(135deg, #d4af37 0%, #f8e9a0 50%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .home-card:hover {
+      box-shadow: 0 20px 60px rgba(0,0,0,0.95);
+      transform: translateY(-8px);
+      border-color: #d4af37;
+    }
+
+    .section {
+      background: rgba(15,23,42,0.96) !important;
+      color: #e5e7eb !important;
+      border-color: rgba(250,204,21,0.55) !important;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.9) !important;
+    }
+
+    .section h2 {
+      color: #facc15 !important;
+    }
+
+    .section h2::after {
+      background: linear-gradient(90deg, transparent, #facc15, transparent) !important;
+    }
+
+    .section p,
+    .section li {
+      color: #e5e7eb !important;
+    }
+
+    .section p strong {
+      color: #fef9c3 !important;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #d4af37 0%, #f8e9a0 50%, #d4af37 100%);
+      color: #111827;
+      border-radius: 999px;
+      box-shadow: 0 14px 32px rgba(0,0,0,0.8);
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #f8e9a0 0%, #d4af37 50%, #f8e9a0 100%);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.95);
+    }
+
+    .iban {
+      background: rgba(15,23,42,0.9);
+      border-color: rgba(250,204,21,0.7);
+      color: #fef9c3;
+    }
+
+    .map-container {
+      border-color: rgba(250,204,21,0.7);
+    }
+
+    footer {
+      background: rgba(15,23,42,0.97) !important;
+      border-top: 2px solid rgba(250,204,21,0.6) !important;
+    }
+    /* Cornice in stile biglietto di auguri (rosso scuro) */
+    .xmas-card {
+      max-width: 880px;
+      margin: 90px auto 110px;
+      padding: 32px 28px 40px;
+      background-color: rgba(15,23,42,0.92);
+      border-radius: 26px;
+      box-shadow: 0 22px 70px rgba(0,0,0,0.9);
+      border: 1px solid rgba(248,250,252,0.55);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .xmas-card::before {
+      content: "";
+      position: absolute;
+      inset: 26px;
+      border-radius: 20px;
+      background: rgba(15,23,42,0.97);
+      box-shadow:
+        0 0 0 1px rgba(15,23,42,0.7),
+        0 0 38px rgba(0,0,0,0.7) inset;
+      pointer-events: none;
+    }
+
+    .xmas-card > * {
+      position: relative;
+      z-index: 1;
+    }
+    /* NEVE REALE: fiocchi di neve veri che cadono */
+    #snow-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 9999;
+    }
+
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      pointer-events: none;
+      color: #ffffff;
+      font-size: 20px;
+      opacity: 0.9;
+      animation: fall linear infinite;
+      filter: drop-shadow(0 0 8px white);
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(120vh) rotate(360deg);
+      }
+    }
+    /* Luci di Natale */
+.string-lights {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 86%;
+  height: 26px;
+  pointer-events: none;
+  z-index: 4;
+  background-image:
+    linear-gradient(0deg, rgba(15,23,42,0.9) 0, rgba(15,23,42,0.9) 2px, transparent 2px),
+    radial-gradient(circle at 5% 60%,  #f97316 0, #f97316 4px, transparent 5px),
+    radial-gradient(circle at 20% 60%, #fb7185 0, #fb7185 4px, transparent 5px),
+    radial-gradient(circle at 35% 60%, #22c55e 0, #22c55e 4px, transparent 5px),
+    radial-gradient(circle at 50% 60%, #38bdf8 0, #38bdf8 4px, transparent 5px),
+    radial-gradient(circle at 65% 60%, #eab308 0, #eab308 4px, transparent 5px),
+    radial-gradient(circle at 80% 60%, #f97316 0, #f97316 4px, transparent 5px),
+    radial-gradient(circle at 95% 60%, #22c55e 0, #22c55e 4px, transparent 5px);
+  background-repeat: no-repeat;
+}
+
+  </style>
+</head>
+<body>
+
+<div id="snow-container"></div>
+<div class="xmas-card">
+
+<header>
+  <h1>18 ANTONIO</h1>
+  <p>18 Anni · Venerdì 2 Gennaio 2026 · Ore 20:00</p>
+</header>
+
+<section class="home-hero">
+  <div class="string-lights"></div>
+  <h2 class="home-title">MEGA PARTY</h2>
+  <p class="home-subtitle">Esplora i dettagli della serata</p>
+  <div class="home-countdown-card">
+    <div id="home-countdown"></div>
+  </div>
+
+  <div class="home-grid">
+    <a class="home-card" href="details.html">
+      <span><i class="fas fa-map-marker-alt"></i></span>
+      <h3>Dettagli</h3>
+    </a>
+
+    <a class="home-card" href="map.html">
+      <span><i class="fas fa-route"></i></span>
+      <h3>Come Arrivare</h3>
+    </a>
+
+    <a class="home-card" href="rsvp.html">
+      <span><i class="fas fa-check-circle"></i></span>
+      <h3>Conferma</h3>
+    </a>
+
+
+    <a class="home-card" href="payments.html">
+      <span><i class="fas fa-gift"></i></span>
+      <h3>Regalo</h3>
+    </a>
+
+    <a class="home-card" href="contacts.html">
+      <span><i class="fas fa-phone-alt"></i></span>
+      <h3>Contatti</h3>
+    </a>
+    <a class="home-card" href="messaggio.html">
+      <span><i class="fas fa-envelope-open-text"></i></span>
+      <h3>Lascia un Messaggio</h3>
+    </a>
+  </div>
+</section>
+
+<div class="main-grid" id="content" style="display:none;">
+
+  <section class="section" id="countdown-section">
+    <h2><i class="fas fa-hourglass-half"></i> Countdown alla Festa</h2>
+    <p id="countdown"></p>
+  </section>
+
+  <section class="section" id="details">
+    <h2><i class="fas fa-map-marker-alt"></i> Dettagli Evento</h2>
+    <p><strong>Data:</strong> Venerdì 2 Gennaio 2026</p>
+    <p><strong>Orario:</strong> 20:00</p>
+    <p><strong>Location:</strong> Suprema Experience</p>
+    <p><strong>Indirizzo:</strong> Strada Provinciale Circumlago di Lucrino, 4b — Pozzuoli (NA)</p>
+    <p style="margin-top:20px;font-style:italic;line-height:1.6;color:#fefefe;">
+      Sarà una serata indimenticabile, in una calda atmosfera natalizia, per celebrare insieme questo importante traguardo.
+      Vi aspetto per condividere momenti speciali, musica, divertimento, luci di Natale e tante emozioni.
+    </p>
+  </section>
+
+  <section class="section" id="map">
+    <h2><i class="fas fa-route"></i> Come Arrivare</h2>
+    <p>Suprema Experience<br>Strada Provinciale Circumlago di Lucrino, 4b — Pozzuoli (NA)</p>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps?q=Suprema%20Experience%20Pozzuoli&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <section class="section" id="rsvp">
+    <h2><i class="fas fa-check-circle"></i> Conferma Presenza</h2>
+    <p style="line-height:1.6;margin-bottom:20px;">
+      La tua presenza è importante. Conferma la tua partecipazione compilando il form qui sotto.
+    </p>
+    <form class="rsvp-form" onsubmit="sendWhatsApp(event)">
+      <input id="rsvp-name" type="text" placeholder="Il tuo nome" required>
+      <input id="rsvp-people" type="number" min="1" placeholder="Numero di persone" required>
+      <textarea id="rsvp-message" placeholder="Lascia un messaggio (facoltativo)"></textarea>
+      <button type="submit" class="btn">Conferma su WhatsApp</button>
+    </form>
+  </section>
+
+  <section class="section">
+    <h2><i class="fas fa-book"></i> Guestbook</h2>
+    <p style="line-height:1.6;margin-bottom:20px;">
+      Lascia un messaggio speciale o un augurio per questo importante traguardo:
+    </p>
+    <form class="rsvp-form" onsubmit="addGuestbookMessage(event)">
+      <input id="guest-name" type="text" placeholder="Il tuo nome" required>
+      <textarea id="guest-text" placeholder="Il tuo messaggio" required></textarea>
+      <button type="submit" class="btn">Pubblica Messaggio</button>
+    </form>
+    <div id="guestbook" class="guestbook-messages"></div>
+  </section>
+
+
+  <section class="section" id="pay">
+    <h2><i class="fas fa-gift"></i> Lista dei Desideri</h2>
+    <p style="line-height:1.6;margin-bottom:16px;">
+      Se desiderate farmi un regalo, ecco alcune idee che apprezzerei particolarmente:
+    </p>
+    <ul style="font-size:16px;line-height:1.8;padding-left:24px;">
+      <li>Esperienze indimenticabili (viaggi, concerti, eventi sportivi)</li>
+      <li>Tecnologia e accessori (cuffie premium, smartwatch, gadget innovativi)</li>
+      <li>Contributo per patente o automobile</li>
+      <li>La vostra presenza e un brindisi insieme per celebrare questa serata speciale</li>
+    </ul>
+  </section>
+
+  <section class="section" id="pay-online">
+    <h2><i class="fas fa-credit-card"></i> Contributi Online</h2>
+    <p style="line-height:1.6;margin-bottom:20px;">
+      Se preferisci, puoi inviare un contributo tramite carta di credito o PayPal in modo semplice e sicuro:
+    </p>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:22px;margin-top:25px;margin-bottom:12px;color:#facc15;">Pagamento con Carta</h3>
+    <p style="margin-bottom:15px;line-height:1.6;">Transazione sicura tramite Stripe.</p>
+    <button class="btn" onclick="checkoutStripe()">Procedi al Pagamento</button>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:22px;margin-top:35px;margin-bottom:12px;color:#facc15;">Pagamento con PayPal</h3>
+    <input id="amount" type="number" min="1" placeholder="Inserisci l'importo" style="width:100%;padding:14px 16px;font-size:18px;border-radius:8px;margin-bottom:15px;border:1px solid rgba(44,83,100,0.2);font-family:'Poppins',sans-serif;">
+    <div id="paypal-button-container"></div>
+  </section>
+
+  <section class="section" id="contatti">
+    <h2><i class="fas fa-phone-alt"></i> Contatti</h2>
+    <p style="line-height:1.6;margin-bottom:16px;">
+      Per qualsiasi informazione o per confermare la tua presenza, non esitare a contattarmi:
+    </p>
+    <p style="margin-bottom:8px;"><strong>Telefono:</strong> <a href="tel:0000000000" style="color:#facc15;text-decoration:none;">0000000000</a></p>
+    <p><strong>Instagram:</strong> <a href="https://instagram.com/tuonome" target="_blank" style="color:#facc15;text-decoration:none;">@tuonome</a></p>
+  </section>
+
+
+</div>
+
+<footer style="background:rgba(15,32,39,0.95);color:#f5f5f5;text-align:center;padding:40px 20px;margin-top:60px;border-top:2px solid rgba(212,175,55,0.3);">
+  <p style="font-family:'Playfair Display',serif;font-size:28px;margin:0 0 10px 0;background:linear-gradient(135deg,#d4af37 0%,#f8e9a0 50%,#d4af37 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Antonio</p>
+  <p style="margin:8px 0;opacity:0.8;font-size:16px;">18 Anni · 2 Gennaio 2026</p>
+  <p style="margin:20px 0 0 0;font-size:14px;opacity:0.6;letter-spacing:1px;">Non vedo l'ora di festeggiare i miei 18 anni con voi</p>
+</footer>
+
+</div>
+
+<script>
+function copyIBAN() {
+  const iban = document.getElementById("iban-display")?.innerText;
+  if (!iban) return;
+  navigator.clipboard.writeText(iban).then(() => alert("IBAN copiato negli appunti!"));
+}
+</script>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AXr9FTIZPHKo1ZvHs_hI6DuoxE5q0r0MZpvk7TkpstDuPKnrKbHVq0M4b3_JYiGKJyoElBsQ2qNM42Xs&currency=EUR"></script>
+<script>
+function checkoutStripe() {
+  const stripe = Stripe('INSERISCI_TUA_PUBLIC_KEY_STRIPE');
+  stripe.redirectToCheckout({
+    sessionId: 'INSERISCI_TUA_CHECKOUT_SESSION_ID'
+  });
+}
+
+paypal.Buttons({
+  createOrder: function(data, actions) {
+    return actions.order.create({
+      purchase_units: [{ amount: { value: document.getElementById('amount').value || '1.00' } }]
+    });
+  },
+  onApprove: function(data, actions) {
+    return actions.order.capture().then(function(details) {
+      alert('Pagamento completato da ' + details.payer.name.given_name);
+    });
+  }
+}).render('#paypal-button-container');
+</script>
+
+<script>
+  // COUNTDOWN
+  const targetDate = new Date('2026-01-02T20:00:00');
+  function updateCountdown() {
+    const now = new Date();
+    const diff = targetDate - now;
+    const el = document.getElementById('countdown');
+    const homeEl = document.getElementById('home-countdown');
+    if (!el && !homeEl) return;
+    if (diff <= 0) {
+      const message = "La celebrazione è iniziata!";
+      if (el) el.textContent = message;
+      if (homeEl) homeEl.textContent = message;
+      return;
+    }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const message = `${days} giorni, ${hours} ore e ${minutes} minuti alla grande serata`;
+    if (el) el.textContent = message;
+    if (homeEl) homeEl.textContent = message;
+  }
+  setInterval(updateCountdown, 60000);
+  updateCountdown();
+
+  // WHATSAPP RSVP
+  function sendWhatsApp(event) {
+    event.preventDefault();
+    const name = document.getElementById('rsvp-name').value || 'Ospite';
+    const people = document.getElementById('rsvp-people').value || '1';
+    const msg = document.getElementById('rsvp-message').value || '';
+    const text = encodeURIComponent(`Salve Antonio, sono ${name}. Confermo la presenza di ${people} persona/e per la tua festa del 18° compleanno.${msg ? '\n\nMessaggio: ' + msg : ''}`);
+    const phone = '393925756418'; // SOSTITUISCI CON IL TUO NUMERO WHATSAPP
+    window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+  }
+
+  // GUESTBOOK (locale sul dispositivo)
+  function loadGuestbook() {
+    const container = document.getElementById('guestbook');
+    if (!container) return;
+    const stored = JSON.parse(localStorage.getItem('guestbookMessages') || '[]');
+    container.innerHTML = '';
+    stored.forEach(m => {
+      const p = document.createElement('p');
+      p.textContent = `${m.name}: ${m.text}`;
+      container.appendChild(p);
+    });
+  }
+  function addGuestbookMessage(event) {
+    event.preventDefault();
+    const name = document.getElementById('guest-name').value;
+    const text = document.getElementById('guest-text').value;
+    if (!name || !text) return;
+    const stored = JSON.parse(localStorage.getItem('guestbookMessages') || '[]');
+    stored.push({ name, text });
+    localStorage.setItem('guestbookMessages', JSON.stringify(stored));
+    document.getElementById('guest-name').value = '';
+    document.getElementById('guest-text').value = '';
+    loadGuestbook();
+  }
+  loadGuestbook();
+
+</script>
+
+<script>
+function showContent() {
+  document.getElementById('content').style.display = 'grid';
+}
+</script>
+
+<!-- NEVE REALE: script fiocchi -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const snowContainer = document.getElementById('snow-container');
+  const flakes = ["❄"];
+
+  function createFlake() {
+    const flake = document.createElement('div');
+    flake.className = 'snowflake';
+    flake.textContent = flakes[Math.floor(Math.random() * flakes.length)];
+
+    const duration = 8 + Math.random() * 6;
+
+    flake.style.left = Math.random() * 100 + 'vw';
+    flake.style.top = (-200 - Math.random() * 400) + 'px';
+    flake.style.fontSize = (18 + Math.random() * 20) + 'px';
+    flake.style.animationDuration = duration + 's';
+    flake.style.animationDelay = (-duration * Math.random()) + 's';
+
+    snowContainer.appendChild(flake);
+
+    setTimeout(() => {
+      flake.remove();
+    }, 20000);
+  }
+
+  // qualche fiocco iniziale
+  for (let i = 0; i < 15; i++) {
+    setTimeout(createFlake, i * 150);
+  }
+
+  // neve continua
+  setInterval(createFlake, 600);
+});
+</script>
+
+</body>
+</html>

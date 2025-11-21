@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dettagli Evento – Antonio 18 Anni</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      background-attachment: fixed;
+      color: #f5f5f5;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .back-arrow {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 24px;
+      background: rgba(212,175,55,0.2);
+      backdrop-filter: blur(10px);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 99999;
+      border: 1px solid rgba(212,175,55,0.4);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .back-arrow:hover {
+      background: rgba(212,175,55,0.4);
+      transform: scale(1.1);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 80px auto 40px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.98);
+      padding: 50px 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+      border: 1px solid rgba(212,175,55,0.3);
+      color: #222;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      margin: 0 0 30px 0;
+      color: #2c5364;
+      font-weight: 600;
+      text-align: center;
+      position: relative;
+      padding-bottom: 20px;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      border-radius: 2px;
+    }
+
+    h1 i {
+      color: #d4af37;
+      margin-right: 15px;
+    }
+
+    .detail-item {
+      margin-bottom: 20px;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(44,83,100,0.1);
+    }
+
+    .detail-item:last-of-type {
+      border-bottom: none;
+    }
+
+    .detail-item strong {
+      color: #2c5364;
+      font-weight: 600;
+      font-size: 18px;
+      display: inline-block;
+      min-width: 120px;
+    }
+
+    .detail-item span {
+      color: #444;
+      font-size: 17px;
+    }
+
+    .description {
+      margin-top: 30px;
+      padding: 25px;
+      background: rgba(212,175,55,0.05);
+      border-left: 4px solid #d4af37;
+      border-radius: 8px;
+      font-style: italic;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 16px 32px;
+      background: linear-gradient(135deg, #d4af37 0%, #f8e9a0 100%);
+      color: #222;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+      letter-spacing: 1px;
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(135deg, #f8e9a0 0%, #d4af37 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212,175,55,0.5);
+    }
+
+    .back-btn i {
+      margin-right: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        padding: 30px 25px;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .detail-item strong {
+        display: block;
+        margin-bottom: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-arrow"><i class="fas fa-arrow-left"></i></a>
+
+  <div class="container">
+    <div class="card">
+      <h1><i class="fas fa-map-marker-alt"></i>Dettagli Evento</h1>
+
+      <div class="detail-item">
+        <strong><i class="fas fa-calendar-alt" style="color:#d4af37;margin-right:8px;"></i>Data:</strong>
+        <span>Venerdì 2 Gennaio 2026</span>
+      </div>
+
+      <div class="detail-item">
+        <strong><i class="fas fa-clock" style="color:#d4af37;margin-right:8px;"></i>Orario:</strong>
+        <span>20:00</span>
+      </div>
+
+      <div class="detail-item">
+        <strong><i class="fas fa-building" style="color:#d4af37;margin-right:8px;"></i>Location:</strong>
+        <span>Suprema Experience</span>
+      </div>
+
+      <div class="detail-item">
+        <strong><i class="fas fa-map-pin" style="color:#d4af37;margin-right:8px;"></i>Indirizzo:</strong>
+        <span>Strada Provinciale Circumlago di Lucrino, 4b — Pozzuoli (NA)</span>
+      </div>
+
+      <div class="description">
+        <i class="fas fa-quote-left" style="color:#d4af37;margin-right:10px;"></i>
+        Sarà una serata indimenticabile per celebrare insieme questo importante traguardo.
+        Vi aspetto per condividere momenti speciali, musica, divertimento e tante emozioni.
+        <i class="fas fa-quote-right" style="color:#d4af37;margin-left:10px;"></i>
+      </div>
+
+      <a href="index.html" class="back-btn"><i class="fas fa-home"></i>Torna alla Home</a>
+    </div>
+  </div>
+</body>
+</html>
